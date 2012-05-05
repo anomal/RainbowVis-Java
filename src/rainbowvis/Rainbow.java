@@ -1,10 +1,17 @@
+// (MIT License)
+// Copyright (c) 2012 Sophiah (Zing-Ming)
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 package rainbowvis;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
- * 
+ * The Rainbow class by default maps the range 0 to 100 (inclusive) to the colours of the rainbow 
+ * (i.e., a gradient transitioning from red to yellow to lime to blue)
  * @author Sophiah (Zing-Ming)
  *
  */
@@ -16,7 +23,7 @@ public class Rainbow {
 	private ArrayList<ColourGradient> colourGradients;	
 	
 	/**
-	 * Constructor
+	 * Constructor. By default, the number range is from 0 to 100, and the spectrum is a rainbow.
 	 */
 	public Rainbow() {
 		try {
@@ -35,7 +42,8 @@ public class Rainbow {
 	}
 	
 	/**
-	 * Get the colour corresponding to the given number
+	 * Returns the hex colour corresponding to the number. If number is out of range, 
+	 * it returns the appropriate hex colour corresponding to either the minNumber or maxNumber.
 	 * @param number The number for which you want to find the corresponding colour
 	 * @return The corresponding colour represented as a HTML RGB hexidecimal String
 	 */
@@ -50,8 +58,11 @@ public class Rainbow {
 	}	
 	
 	/**
-	 * Sets the rainbow colours to the given spectrum of colour Strings.
-	 * This method can take two or more String arguments. 
+	 * Sets the spectrum of the Rainbow object. By default, the spectrum is a rainbow. 
+	 * You must have a minimum of two colours, but you can specify more than two colours. 
+	 * Colours can be in the form "red", "ff0000", or "#ff0000". 
+	 * For example, <code>rainbow.setSpectrum("red", "yellow", "white");</code>
+	 * makes the "Rainbow" a colour gradient from red to yellow to white. 
 	 * @param spectrum Two or more Strings representing HTML colours,
 	 * or pass in a whole String array of length 2 or greater
 	 * @throws HomogeneousRainbowException if there is less than two arguments
@@ -87,7 +98,7 @@ public class Rainbow {
 	}
 	
 	/**
-	 * Sets the number range of the Rainbow
+	 * Sets the number range of the Rainbow object. By default, it is 0 to 100.
 	 * @param minNumber The minimum number of the number range
 	 * @param maxNumber The maximum number of the number range
 	 * @throws NumberRangeException if minNumber is greater than maxNumber
